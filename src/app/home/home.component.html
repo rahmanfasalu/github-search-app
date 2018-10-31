@@ -35,7 +35,7 @@
     (scrolled)="onScrollDown()">
 
     <div *ngIf="totalCount > 0" class="userList">
-      <div *ngFor="let user of users" class="user-tile" [routerLink]="['/user',user.id]">
+      <div *ngFor="let user of users" class="user-tile" [routerLink]="['/user',user.login]">
         <div class="thumbnail">
           <img [src]="user.avatar_url">
           <div class="caption">

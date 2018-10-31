@@ -32,15 +32,25 @@ export class UserService {
         this.userInfo = this.userInfo.concat(response && response['items'] || []);
         return response;
       }),
-        catchError(this.handleError('getAllUsers', []))
+      catchError(this.handleError('getAllUsers', []))
     );
   }
 
-  getUserDetail(id) {
-    return this.userInfo.filter(item => item.id === Number(id));
+  getUserDetail(login) {
+    return this.userInfo.filter(item => item.login === login);
   }
 
   clearUserDetail() {
     return this.userInfo = [];
+  }
+
+  getSingleUserDetails(name:string): Observable<any> {
+    let url = environment.apiUrl + AppConfig.SERVICE.GET_USER_DETAILS.replace('##',name); 
+    return this.http.get(url)
+      .pipe(map(response => {
+         return response;
+      }),
+      catchError(this.handleError('getAllUsers', []))
+    );
   }
 }

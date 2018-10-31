@@ -6,16 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  private userId;
+  private userName;
+
+  userInfo:any;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((param) => {
-      this.userId = param.id;
-      console.log(param)
-      console.log(this.userService.getUserDetail(this.userId));
+      this.userName = param.login;
+      this.userInfo = this.userService.getUserDetail(this.userName);
+      if(this.userInfo){
+
+      }else{
+        if(this.userName){ 
+          this.userService.getSingleUserDetails(this.userName).subscribe((response)=>{
+              console.log(response)
+          });
+        }
+      }
+
     })
   }
 

@@ -9,7 +9,7 @@ import { UserComponent } from './user/user.component';
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'user/:id', component: UserComponent },
+    { path: 'user/:login', component: UserComponent },
     { path: 'repo/:id', component: RepoComponent },
     { path: '**', redirectTo: 'login' },
 ];
