@@ -1,3 +1,39 @@
-<p>
-  user works!
-</p>
+<div class="repo-header-wrapper">
+    <div class="header-title">
+      <img src="../../assets/GitHub-Mark-Light-64px.png" class="logo-mark" />
+      <img src="../../assets/GitHub_Logo_White.png" class="logo-light" />
+      <span>User Info</span>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="user-wrapper">
+  <div class="user-avtar">
+      <img [src]="userInfo.avatar_url">
+  </div>
+  <div class="userinfo">
+      <h3>{{userInfo.name}}</h3>
+      <h4 *ngIf="userInfo.login">@{{userInfo.login}}</h4>
+      <div class="clear"></div>
+      <p *ngIf="userInfo.location">location: {{userInfo.location}}</p>
+      <a *ngIf="userInfo.blog" href="{{userInfo.blog}}" target="_blank">blog : {{userInfo.blog}}</a>
+      <p *ngIf="userInfo.company">company: {{userInfo.company}}</p>
+      <p *ngIf="userInfo.bio">{{userInfo.bio}}</p>
+      <a *ngIf="userInfo.html_url" href="{{userInfo.html_url}}" target="_blank">Git hub</a>
+      <div class="clear"></div>
+      <ul class="u-flex">
+        <li>
+          <p class="Stats_value">{{userInfo.followers}}</p>
+          <p class="Stats_label">Followers</p>
+        </li>
+        <li>
+          <p class="Stats_value">{{userInfo.following}}</p>
+          <p class="Stats_label">Following</p>
+        </li>
+        <li>
+          <p class="Stats_value">{{userInfo.public_repos}}</p>
+          <p class="Stats_label">Repos</p>
+        </li>
+      </ul>
+  </div>
+  <div class="clear"></div>
+</div>

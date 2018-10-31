@@ -13,21 +13,25 @@ export class UserComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
     this.activatedRoute.params.subscribe((param) => {
       this.userName = param.login;
       this.userInfo = this.userService.getUserDetail(this.userName);
-      if(this.userInfo){
-
+      if(this.userInfo && this.userInfo.login){
+          this.initUserDetails(this.userInfo);
       }else{
         if(this.userName){ 
           this.userService.getSingleUserDetails(this.userName).subscribe((response)=>{
-              console.log(response)
+            this.userInfo = response
+            this.initUserDetails(this.userInfo);
           });
         }
       }
-
     })
   }
 
+  initUserDetails(info){
+
+  }
 }
