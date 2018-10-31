@@ -1,0 +1,78 @@
+﻿<div class="home-header-wrapper">
+  <div class="header-left">
+    <div class="header-title">
+      <img src="../../assets/GitHub-Mark-Light-64px.png" class="logo-mark" />
+      <img src="../../assets/GitHub_Logo_White.png" class="logo-light" />
+      <span>Search</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-search">
+      <input type="text" id="searchInput" [(ngModel)]="searchparam" name="searchparam" placeholder="Type a name then enter, eg: fasalu"
+        (keydown)="onKeyDownEvt($event)">
+      <span class="user">user: {{currentUser}} | <a [routerLink]="['/login']">Logout</a></span>
+
+      <label>
+        <input type="radio" name="search" value="repo" [(ngModel)]="searchType"> Search Repo
+      </label>
+
+      <label>
+        <input type="radio" name="search" value="user" [(ngModel)]="searchType"> Search User
+      </label>
+
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<section class="item-list-wrapper">
+  <h3 class="totalCount" *ngIf="totalCount > 0 || totalRepoCount > 0">{{totalCount || totalRepoCount}} results found
+    for {{searchparam}}</h3>
+  <p class="totalCount" *ngIf="users.length <  totalCount">( {{users.length }} profile loaded, scroll down for more
+    user profile.. )</p>
+  <p class="totalCount" *ngIf="repos.length <  totalRepoCount">( {{repos.length }} repo loaded, scroll down for more. )</p>
+
+  <div class="itemlist" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScrollDown()">
+
+    <div *ngIf="totalCount > 0" class="userList">
+      <div *ngFor="let user of users" class="user-tile" [routerLink]="['/user',user.id]">
+        <div class="thumbnail">
+          <img [src]="user.avatar_url">
+          <div class="caption">
+            {{user.login}}
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+
+    <div *ngIf="totalRepoCount > 0" class="repoList">
+      <div *ngFor="let repo of repos" class="repo-tile" [routerLink]="['/repo',repo.id]">
+        <h3 class="title" title="{{repo.name}}"><span class="title-name">{{repo.name | slice:0:23}}
+            {{ repo.name && repo.name.length > 23 ? '..' : ''}} </span>
+          <span class="owner" *ngIf="repo.owner && repo.owner.login" [routerLink]="['/user', repo.owner.id]">
+            Owner : {{repo.owner.login}}</span></h3>
+        <div class="clear"></div>
+        <div class="repo-language" *ngIf="repo.language"><span class="repo-language-color"></span><span class="repo-language-txt">{{repo.language}}</span></div>
+        <div class="clear"></div>
+        <div class="additional-info">
+          <span>watch:{{repo.watchers_count}}</span>
+          <span>star:{{repo.stargazers_count}}</span>
+          <span>fork:{{repo.fork}}</span>
+        </div>
+        <div class="clear"></div>
+        <p>{{repo.description | slice:0:85 }} {{ repo.description && repo.description.length > 85 ? '...' : ''}}</p>
+        <div class="clear"></div>
+
+        <div class="additional-info">
+          <span>Licence:{{repo.license && repo.license.name || ''}}</span>
+          <span>Updated:{{repo.updated_at | date:fullDate}}</span>
+        </div>
+
+      </div>
+      <div class="clear"></div>
+    </div>
+
+  </div>
+</section>

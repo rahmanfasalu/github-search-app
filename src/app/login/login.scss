@@ -1,0 +1,82 @@
+
+    $break-small: 520px;
+    .login-title{  
+        padding: 10px;
+        color: #FFF;
+        font-weight: normal;
+        background: #4CAF50;
+        height: 32px;
+        img.logo-mark{
+            width:35px;float: left;
+        }
+        img.logo-light{
+            width:100px;float: left;margin-top: -4px;
+        }
+        span{
+            line-height: 36px;
+            font-size: 25px;display: block;float: left;
+        }
+    }
+  .login {
+    margin:0px auto 5px auto;
+    max-width:500px;
+    h2
+    form{
+        position: relative;
+    }
+    .clear{
+        clear:both;
+    }
+    .login-form {
+        box-sizing:border-box;
+        margin:5% auto;
+        padding: 25px;
+        border: 1px solid #4CAF50;
+        .fu-form-field{
+            position: relative;
+            label{
+                text-align:left;
+                color:#000;
+                float: left;
+                width:100%;
+            }
+            input[type="text"], input[type="password"]{
+                width:100%;
+                line-height:3em;
+                margin:0 0 1em 0em;
+                border:1px solid #cacaca;
+                outline:none;
+                padding-left:10px;
+                float: left;
+                &:focus{
+                    outline: none;
+                }
+            }
+            .invalid-formfield{
+                position: absolute;
+                right: 0;
+                font-size: 12px;
+                top:4 px;
+                color: red;
+            }
+        }
+        
+        .custButton {
+            height:40px;
+            width:100px;
+            background: #4CAF50;
+            color: #FFF;
+            text-transform:uppercase;
+            cursor:pointer;
+            border: none;
+        }
+        .login-loading{
+            position: absolute;
+            right: 25px;
+        }
+    }
+
+    @media screen and (max-width: $break-small) {
+       margin: 10px;
+    }
+  }
