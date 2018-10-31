@@ -1,4 +1,6 @@
-
+$break-small: 700px;
+$break-row: 350px;
+$break-large: 840px;
 .repo-header-wrapper{
     width: 96%;
     padding: 10px 2%;
@@ -90,5 +92,65 @@
             }
         }
        }
+    }
+}
+
+
+.user-aditional-info{
+        width: 90%;
+        height: auto;
+        padding: 1% 2%;
+        margin-top: 20px;
+    .repos{
+        width:50%;
+        float: left;
+        .repos-content{
+            padding: 5px;
+
+        }
+    }
+    .followers{
+        h3{
+            color: #4CAF50;
+            text-align: center;
+        }
+        width:50%;
+        float: left;
+        .followers-content{
+            padding: 5px;
+                .user-tile {
+                  width: 96%;
+                  float: left;
+                  border-bottom: 1px solid #4CAF50;
+                  margin: 3px;
+                  margin-bottom: 10px;
+                  padding-bottom:10px;
+                  cursor: pointer;outline:none;
+                  img {
+                    min-width: 70px;
+                    height: 70px;
+                    float: left;
+                  }
+          
+                  .caption {
+                    font-size: 14px;
+                    color: #4CAF50;
+                    float: left;
+                    padding-left: 1%;
+                    text-align: left;
+                    word-break: break-all;
+                  }
+          
+                  @media screen and (max-width: $break-row) {
+                    width: 100%;
+                    min-width: 100%;
+                  }
+          
+                  &:hover {
+                    background-color: #F0f0f0;
+                    transition: 0.3s;
+                  }
+                }
+        }
     }
 }

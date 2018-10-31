@@ -7,7 +7,9 @@ export class AppConfig {
         'GET_CONTRIB': 'repos/##/$$/contributors',
         'GET_BRANCHES': 'repos/##/$$/branches',
         'GET_ISSUES': 'repos/##/$$/issues',
-        'GET_USER_DETAILS':'users/##'
+        'GET_USER_DETAILS':'users/##',
+        'GET_REPO_DETAILS':'users/##/repos',
+        'GET_FOLLOWER_DETAILS':'users/##/followers'
     }
 };
 

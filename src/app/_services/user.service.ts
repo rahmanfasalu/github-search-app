@@ -53,4 +53,14 @@ export class UserService {
       catchError(this.handleError('getAllUsers', []))
     );
   }
+
+  getUserPageContent(url:string,name:string): Observable<any> {
+    return this.http.get(url)
+      .pipe(map(response => {
+         return response;
+      }),
+      catchError(this.handleError('getAllUsers', []))
+    );
+  }
+  
 }

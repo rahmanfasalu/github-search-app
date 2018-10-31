@@ -37,3 +37,25 @@
   </div>
   <div class="clear"></div>
 </div>
+
+
+<div class="user-aditional-info">
+    <div class="followers">
+         <h3>Followers</h3>
+        <div class="followers-content">
+            <div *ngFor="let user of followers" class="user-tile" [routerLink]="['/user',user.login]">
+              <div class="thumbnail">
+                <img [src]="user.avatar_url">
+                <div class="caption">
+                  {{user.login}}
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="repos">
+      <div class="repos-content">
+
+      </div> 
+    </div>
+</div>

@@ -51,7 +51,7 @@
       <div *ngFor="let repo of repos" class="repo-tile" [routerLink]="['/repo',repo.id]">
         <h3 class="title" title="{{repo.name}}"><span class="title-name">{{repo.name | slice:0:23}}
             {{ repo.name && repo.name.length > 23 ? '..' : ''}} </span>
-          <span class="owner" *ngIf="repo.owner && repo.owner.login" [routerLink]="['/user', repo.owner.id]">
+          <span class="owner" *ngIf="repo.owner && repo.owner.login" [routerLink]="['/user', repo.owner.login]">
             Owner : {{repo.owner.login}}</span></h3>
         <div class="clear"></div>
         <div class="repo-language" *ngIf="repo.language"><span class="repo-language-color"></span><span class="repo-language-txt">{{repo.language}}</span></div>
