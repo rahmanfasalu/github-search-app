@@ -1,3 +1,87 @@
-<p>
-  repo works!
-</p>
+<div class="repo-header-wrapper">
+    <div class="header-title">
+      <img src="../../assets/GitHub-Mark-Light-64px.png" class="logo-mark" />
+      <img src="../../assets/GitHub_Logo_White.png" class="logo-light" />
+      <span>Rep Info</span>
+    </div>
+</div>
+
+<div class="repository-wrapper">
+  <div class="info-wrapper">
+    <h3 class="title" title="{{repoInfo.name}}">
+          <span class="owner" *ngIf="repoInfo.owner && repoInfo.owner.login" [routerLink]="['/user', repoInfo.owner.id]">
+            {{repoInfo.name}} / {{repoInfo.owner.login}}</span>
+
+          <div class="additional-info">
+              <span>{{repoInfo.license && repoInfo.license.name || ''}}</span>
+              <span> Updated on {{repoInfo.updated_at | date:fullDate}}</span>
+          </div> 
+    </h3>
+    <div class="clear"></div>
+    <div class="additional-info">
+        <span>watch<span class="additional-info-binding">{{repoInfo.watchers_count}}</span></span>
+        <span>star<span class="additional-info-binding">{{repoInfo.stargazers_count}}</span></span>
+        <span>fork<span class="additional-info-binding">{{repoInfo.fork}}</span></span>
+    </div>
+    <div class="clear"></div>
+    <p>{{repoInfo.description}}</p>
+    <div class="homepage-url"><a href="{{repoInfo.homepage}}" target="_blank">{{repoInfo.homepage}}</a></div>
+    <div class="clear"></div>
+     <div class="clone-url">Clone URL - {{repoInfo.clone_url}}</div><div class="clear"></div>
+     <div class="topics" *ngIf="repoInfo && repoInfo.topics">
+       <p>Tags</p>
+       <div *ngFor="let topic of repoInfo.topics">
+           <span>{{topic}}</span>
+       </div>
+     </div>
+     <div class="clear"></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab-title-wrapper">
+    <ul>
+      <li  [class.active]="viewMode == 'tab1'" (click)="viewMode ='tab1'">Contributors</li>
+      <li  [class.active]="viewMode == 'tab2'" (click)="viewMode ='tab2'">Branches</li>
+      <li  [class.active]="viewMode == 'tab3'" (click)="viewMode ='tab3'">Issues</li>
+      <li  [class.active]="viewMode == 'tab4'" (click)="viewMode ='tab4'">ReadMe.md</li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+  <div [ngSwitch]="viewMode" class="tab-content-wrapper">
+    <div *ngSwitchCase="'tab1'" class="tab-content">
+        <div *ngIf="this.contributors.length > 0" class="userList">
+            <div *ngFor="let item of contributors" class="user-tile" [routerLink]="['/user',item.id]">
+              <div class="thumbnail">
+                <img [src]="item.avatar_url">
+                <div class="caption">
+                  {{item.login}}
+                </div>
+              </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div *ngSwitchCase="'tab2'" class="tab-content">
+        <ul *ngIf="this.branches.length > 0">
+            <li *ngFor="let item of branches">
+              <a href="{{item.commit && item.commit.url ?  item.commit.url : '#'}}" target="_blank">{{item.name}}</a> 
+            </li>
+        </ul>
+    </div>
+    <div *ngSwitchCase="'tab3'" class="tab-content">
+        <div *ngIf="this.issues.length > 0" >
+            <div *ngFor="let item of issues">
+                <div class="single-issues">
+                  <h3>{{item.title}}</h3>
+                  <p  [innerHTML]="item.body"></p>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div  *ngSwitchCase="'tab4'" class="tab-content">
+        <div *ngIf="readMeContent" [innerHTML]="readMeContent"></div>
+    </div>
+  </div>
+</div>

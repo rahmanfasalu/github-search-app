@@ -42,4 +42,23 @@ export class RepoService {
   clearRepoDetail() {
     return this.repoInfo = [];
   }
+
+  getReleases(){
+    return this.http.get('https://api.github.com/repos/angular/angular/readme')
+      .pipe(map(response => {
+        this.repoInfo = this.repoInfo.concat(response && response['items'] || []);
+        return response;
+      }),
+        catchError(this.handleError('getAllUsers', []))
+    );
+  }
+
+  getRepoTabContent(url,owner,repo): Observable<any>{
+    return this.http.get(url)
+      .pipe(map(response => {
+        return response;
+      }),
+        catchError(this.handleError('getAllUsers', []))
+    );
+  }
 }

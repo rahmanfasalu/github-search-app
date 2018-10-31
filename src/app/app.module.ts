@@ -16,6 +16,7 @@ import { LoginComponent } from './login';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { UserComponent } from './user/user.component';
 import { RepoComponent } from './repo/repo.component';
+
 @NgModule({
     imports: [
         BrowserModule,

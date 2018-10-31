@@ -8,14 +8,11 @@ export class JwtInterceptor implements HttpInterceptor {
         // add authorization header with jwt token if available
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser) {
-            request = request.clone({
-                setHeaders: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/vnd.github.mercy-preview+json'
-                }
-            });
+            if(!request.headers.get('Accept')){
+                request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+                request = request.clone({ headers: request.headers.set('Accept', 'application/vnd.github.mercy-preview+json') });
+            }
         }
-
         return next.handle(request);
     }
 }

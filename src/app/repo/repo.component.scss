@@ -1,0 +1,173 @@
+$break-small: 700px;
+$break-row: 350px;
+$break-large: 840px;
+
+.repo-header-wrapper{
+    width: 96%;
+    padding: 10px 2%;
+    background: #4CAF50;
+    color: #FFF;
+    height: 35px; 
+    img.logo-mark {
+        width: 35px;
+        float: left;
+    }
+
+    img.logo-light {
+        width: 100px;
+        float: left;
+        margin-top: -4px;
+    }
+
+    span {
+        line-height: 36px;
+        font-size: 25px;
+        display: block;
+        float: left;
+    }
+}
+
+.repository-wrapper{
+    width: 96%;
+    padding: 0 2%;
+    .info-wrapper{
+        border: 1px solid #cacaca;
+        padding: 10px;
+        background:#F0F0F0;
+        margin-top:10px;
+
+        h3.title{
+            color: #4CAF50;
+            .owner{
+                float: left;
+            }
+            .additional-info{
+                font-size: 11px;font-weight: normal;
+                float: right;
+                span{
+                    border: 1px solid #cacaca;padding: 3px; margin-right: 2px;
+                }
+            }
+        }
+        .additional-info{
+            margin-top: 10px;height: auto;
+            span{
+                padding: 3px;border: 1px solid #cacaca;    margin-right: 8px;    font-size: 12px;
+               
+               
+                .additional-info-binding{
+                    background: #FFF;font-weight: bold;
+                    border: none;    margin-left: 2px;
+                }
+            }
+        }
+        p{
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .homepage-url{
+            a{
+                color: #4CAF50;
+                text-decoration: underline;
+                font-size: 16px;line-height: 30px;
+            }
+        }
+
+        .topics{
+            p{
+                float: left;margin:0;margin-right: 10px;
+            }
+            span{
+                margin-right: 10px;
+                margin-bottom: 5px;
+                background: #CCCC;
+                padding: 3px 11px;
+                font-size: 14px;
+                float: left;
+            }
+            
+        }
+
+        .clone-url{
+            font-size: 12px;
+            padding: 5px;clear: both;margin-bottom: 10px;
+            background: #FFF;float: left;
+        }
+    }
+}
+
+.tabs{ 
+    padding: 1% 2%;
+    width: 96%;
+    .tab-title-wrapper{
+        ul{
+            margin: 0;padding:0;
+            li{
+                float: left;
+                list-style-type: none;
+                padding: 5px;
+                font-size: 14px;
+                margin-right: 2px;
+                background: #F0F0F0;
+                cursor: pointer;
+                border-bottom: 5px solid #4CAF50;
+                &:hover,&.active{
+                   color: #FFF;
+                   transition: 0.3s;
+                   background: #4CAF50;
+                   border-bottom: 5px solid #CECECE; 
+                }
+            }
+        }
+    }
+
+    .tab-content-wrapper{
+         margin-top:15px;
+        .tab-content{
+            .userList {
+                .user-tile {
+                  width: 19%;
+                  float: left;
+                  border: 1px solid #cacaca;
+                  margin: 3px;
+                  padding: 1px;
+                  cursor: pointer;
+                  min-width: 250px;
+          
+                  img {
+                    min-width: 70px;
+                    height: 70px;
+                    float: left;
+                  }
+          
+                  .caption {
+                    font-size: 14px;
+                    color: #4CAF50;
+                    float: left;
+                    padding-left: 1%;
+                    width: 59%;
+                    text-align: left;
+                    word-break: break-all;
+                  }
+          
+                  @media screen and (max-width: $break-row) {
+                    width: 100%;
+                    min-width: 100%;
+                  }
+          
+                  &:hover {
+                    background-color: #F0f0f0;
+                    transition: 0.3s;
+                  }
+                }
+            }
+            
+            .single-issues{
+                border-bottom: 1px solid #4CAF50;
+                padding: 10px 5px;
+                background: #F0F0F0;
+                overflow: hidden;
+            }
+        }
+    }
+}
