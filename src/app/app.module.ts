@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -21,7 +21,7 @@ import { RepoComponent } from './repo/repo.component';
     imports: [
         BrowserModule,
         ReactiveFormsModule, FormsModule,
-        HttpClientModule, InfiniteScrollModule,
+        HttpClientModule, InfiniteScrollModule,NgHttpLoaderModule,
         routing
     ],
     declarations: [

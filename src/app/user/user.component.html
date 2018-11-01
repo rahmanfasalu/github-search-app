@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="clear"></div>
-<div class="user-wrapper">
+<div class="user-wrapper"  *ngIf="userInfo.login">
   <div class="user-avtar">
       <img [src]="userInfo.avatar_url">
   </div>
@@ -39,23 +39,46 @@
 </div>
 
 
-<div class="user-aditional-info">
-    <div class="followers">
-         <h3>Followers</h3>
-        <div class="followers-content">
-            <div *ngFor="let user of followers" class="user-tile" [routerLink]="['/user',user.login]">
-              <div class="thumbnail">
-                <img [src]="user.avatar_url">
-                <div class="caption">
-                  {{user.login}}
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
+<div class="user-aditional-info" *ngIf="reposInfo.length">
     <div class="repos">
       <div class="repos-content">
+        <div *ngFor="let repo of reposInfo" class="repo-tile" [routerLink]="['/repo',repo.id,repo.owner.login,repo.name]">
+          <h3 class="title" title="{{repo.name}}"><span class="title-name">{{repo.name}}
+            </span>
+         </h3>
+        <div class="clear"></div>
+        <div class="repo-language" *ngIf="repo.language"><span class="repo-language-color"></span><span class="repo-language-txt">{{repo.language}}</span></div>
+        <div class="clear"></div>
+        <div class="additional-info">
+          <span>watch:{{repo.watchers_count}}</span>
+          <span>star:{{repo.stargazers_count}}</span>
+          <span>fork:{{repo.fork}}</span>
+        </div>
+        <div class="clear"></div>
+        <p>{{repo.description }}</p>
+        <div class="clear"></div>
 
+        <div class="additional-info">
+          <span>Licence:{{repo.license && repo.license.name || ''}}</span>
+          <span>Updated:{{repo.updated_at | date:fullDate}}</span>
+        </div>
+        </div>
       </div> 
     </div>
+
+
+    <div class="followers"  *ngIf="followers.length">
+      <h3>Followers</h3>
+     <div class="followers-content" *ngIf="followers.length">
+         <div *ngFor="let user of followers" class="user-tile" [routerLink]="['/user',user.login]">
+           <div class="thumbnail">
+             <img [src]="user.avatar_url">
+             <div class="caption">
+               {{user.login}}
+             </div>
+           </div>
+         </div>
+     </div>
+ </div>
+ <div class="clear"></div>
 </div>

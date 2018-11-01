@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="repository-wrapper">
+<div class="repository-wrapper" *ngIf="repoInfo.name">
   <div class="info-wrapper">
     <h3 class="title" title="{{repoInfo.name}}">
           <span class="owner" *ngIf="repoInfo.owner && repoInfo.owner.login" [routerLink]="['/user', repoInfo.owner.id]">
@@ -44,14 +44,14 @@
       <li  [class.active]="viewMode == 'tab1'" (click)="viewMode ='tab1'">Contributors</li>
       <li  [class.active]="viewMode == 'tab2'" (click)="viewMode ='tab2'">Branches</li>
       <li  [class.active]="viewMode == 'tab3'" (click)="viewMode ='tab3'">Issues</li>
-      <li  [class.active]="viewMode == 'tab4'" (click)="viewMode ='tab4'">ReadMe.md</li>
+    <!-- <li  [class.active]="viewMode == 'tab4'" (click)="viewMode ='tab4'">ReadMe.md</li>-->  
     </ul>
   </div>
   <div class="clear"></div>
   <div [ngSwitch]="viewMode" class="tab-content-wrapper">
     <div *ngSwitchCase="'tab1'" class="tab-content">
-        <div *ngIf="this.contributors.length > 0" class="userList">
-            <div *ngFor="let item of contributors" class="user-tile" [routerLink]="['/user',item.id]">
+        <div *ngIf="contributors.length > 0" class="userList">
+            <div *ngFor="let item of contributors" class="user-tile" [routerLink]="['/user',item.login]">
               <div class="thumbnail">
                 <img [src]="item.avatar_url">
                 <div class="caption">
@@ -61,16 +61,26 @@
             </div>
             <div class="clear"></div>
         </div>
+        
+        <div *ngIf="!contributors.length" class="nodata-display">
+              No data to display 
+        </div>
+
     </div>
     <div *ngSwitchCase="'tab2'" class="tab-content">
-        <ul *ngIf="this.branches.length > 0">
+        <ul *ngIf="branches.length > 0">
             <li *ngFor="let item of branches">
-              <a href="{{item.commit && item.commit.url ?  item.commit.url : '#'}}" target="_blank">{{item.name}}</a> 
+              <a href="{{'https://github.com/' + repoInfo.owner.login + '/'  + repoInfo.name + '/tree/' + item.name}}" target="_blank">{{item.name}}</a> 
             </li>
         </ul>
+
+        <div *ngIf="!branches.length" class="nodata-display">
+          No data to display 
+        </div>
+
     </div>
     <div *ngSwitchCase="'tab3'" class="tab-content">
-        <div *ngIf="this.issues.length > 0" >
+        <div *ngIf="issues.length > 0" >
             <div *ngFor="let item of issues">
                 <div class="single-issues">
                   <h3>{{item.title}}</h3>
@@ -79,9 +89,18 @@
             </div>
             <div class="clear"></div>
         </div>
+        <div *ngIf="!issues.length" class="nodata-display">
+          No data to display 
+        </div>
+
     </div>
-    <div  *ngSwitchCase="'tab4'" class="tab-content">
+  <!--   <div  *ngSwitchCase="'tab4'" class="tab-content">
         <div *ngIf="readMeContent" [innerHTML]="readMeContent"></div>
-    </div>
-  </div>
+
+        <div *ngIf="!readMeContent" class="nodata-display">
+          No data to display 
+        </div>
+
+    </div>  
+  </div>-->  
 </div>

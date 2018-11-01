@@ -10,7 +10,8 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'user/:login', component: UserComponent },
-    { path: 'repo/:id', component: RepoComponent },
+    { path: 'repo/:name', component: RepoComponent },
+    { path: 'repo/:id/:owner/:name', component: RepoComponent },
     { path: '**', redirectTo: 'login' },
 ];
 

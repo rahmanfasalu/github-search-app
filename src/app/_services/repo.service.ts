@@ -36,21 +36,16 @@ export class RepoService {
 
 
   getRepoDetail(id) {
-    return this.repoInfo.filter(item => item.id === Number(id));
+    let arr =  this.repoInfo.filter(item => item.id === Number(id));
+    if(arr && arr.length){
+      return arr[0];
+    }else{
+      return {};
+    }
   }
 
   clearRepoDetail() {
     return this.repoInfo = [];
-  }
-
-  getReleases(){
-    return this.http.get('https://api.github.com/repos/angular/angular/readme')
-      .pipe(map(response => {
-        this.repoInfo = this.repoInfo.concat(response && response['items'] || []);
-        return response;
-      }),
-        catchError(this.handleError('getAllUsers', []))
-    );
   }
 
   getRepoTabContent(url,owner,repo): Observable<any>{
@@ -61,4 +56,15 @@ export class RepoService {
         catchError(this.handleError('getAllUsers', []))
     );
   }
+ 
+  getSingleRepoDetails(owner:string,name:string): Observable<any> {
+    let url = environment.apiUrl + AppConfig.SERVICE.GET_SING_REPO_DETAILS.replace('##',owner).replace('$$',name); 
+    return this.http.get(url)
+      .pipe(map(response => {
+         return response;
+      }),
+      catchError(this.handleError('getAllUsers', []))
+    );
+  }
+  
 }

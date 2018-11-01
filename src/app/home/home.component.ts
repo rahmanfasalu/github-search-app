@@ -32,6 +32,15 @@ export class HomeComponent implements OnInit {
 
     }
 
+    searchReset(type){
+        if(this.searchType !== type){
+            let event = {
+                keyCode:13
+            }
+            this.searchType = type;
+            this.onKeyDownEvt(event);
+        }
+    }
     onScrollDown(ev) {
         let pageSize = Number(AppConfig.DATAPERPAGE);
         if (this.users && this.users.length && this.users.length < this.totalCount) {
@@ -42,6 +51,7 @@ export class HomeComponent implements OnInit {
             this.fechGitRepos(page);
         }
     }
+
     onKeyDownEvt(event) {
 
         if (event.keyCode == 13) {
@@ -73,7 +83,6 @@ export class HomeComponent implements OnInit {
             if (response && response.items) {
                 this.users = this.users.concat(response.items);
             }
-            console.log(this.users);
             this.totalCount = response && response.total_count ? response.total_count : 0
 
         }, error => {

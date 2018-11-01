@@ -9,6 +9,30 @@ body{
 input,h1, h2, h3, h4, h5, h6, a{
     font-family: 'Open Sans', sans-serif; 
 }
+p{
+    font-family: 'Open Sans', sans-serif; 
+}
+ul,li{
+    font-family: 'Open Sans', sans-serif; 
+}
+div,span{
+    font-family: 'Open Sans', sans-serif; 
+}
 .clear{
     clear: both;
+}
+
+.nodata-display{
+    font-size: 15px;
+    color: #000;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px dashed #4CAF50;
+    width: 90%;
+    float: left;
+    text-align: center;
+}
+
+#spinner{
+    background-color: transparent  !important;
 }

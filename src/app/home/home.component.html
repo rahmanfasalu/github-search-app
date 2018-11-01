@@ -13,11 +13,11 @@
       <span class="user">user: {{currentUser}} | <a [routerLink]="['/login']">Logout</a></span>
 
       <label>
-        <input type="radio" name="search" value="repo" [(ngModel)]="searchType"> Search Repo
+        <input type="radio" name="search" value="repo" [(ngModel)]="searchType" (click)="searchReset('repo')"> Search Repo
       </label>
 
       <label>
-        <input type="radio" name="search" value="user" [(ngModel)]="searchType"> Search User
+        <input type="radio" name="search" value="user" [(ngModel)]="searchType" (click)="searchReset('user')"> Search User
       </label>
 
       <div class="clear"></div>
@@ -48,7 +48,7 @@
 
 
     <div *ngIf="totalRepoCount > 0" class="repoList">
-      <div *ngFor="let repo of repos" class="repo-tile" [routerLink]="['/repo',repo.id]">
+      <div *ngFor="let repo of repos" class="repo-tile" [routerLink]="['/repo',repo.id, repo.owner.login,repo.name]">
         <h3 class="title" title="{{repo.name}}"><span class="title-name">{{repo.name | slice:0:23}}
             {{ repo.name && repo.name.length > 23 ? '..' : ''}} </span>
           <span class="owner" *ngIf="repo.owner && repo.owner.login" [routerLink]="['/user', repo.owner.login]">
