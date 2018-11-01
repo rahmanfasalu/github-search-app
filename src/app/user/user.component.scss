@@ -102,13 +102,15 @@ $break-large: 840px;
         width: 90%;
         height: auto;
         padding: 1% 2%;
-        margin-top: 20px;
+        margin-top: 20px;     
     .repos{
         width:50%;
-        float: left;
+
         .repos-content{
             padding: 5px;
             outline: none;
+            float: left;
+            
                 .repo-tile {
                   width: 90%;
                   margin: 3px;

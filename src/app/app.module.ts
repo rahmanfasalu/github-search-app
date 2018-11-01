@@ -17,6 +17,48 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { UserComponent } from './user/user.component';
 import { RepoComponent } from './repo/repo.component';
 
+
+
+/*
+ ********************************************************************************************
+                                    AppModule
+ ********************************************************************************************
+ @description:Application root module, set of directives and pipes and other common module imported here
+ @import:
+ BrowserModule - For to Configures a browser-based application to transition from a server-rendered app
+ ReactiveFormsModule - For adding Reactive form component
+ FormsModule - For adding tempplate based form module
+ HttpClientModule - for http request handling
+ InfiniteScrollModule  -  for infinte scroll in the search page, it will trigger when we scroll based on the configuration
+ NgHttpLoaderModule  - for preloader through out the application
+ routing  - Application global routing
+
+ ********************************************************************************************
+                                    AppModule  - Component Declaration
+ ********************************************************************************************
+
+ AppComponent  - Application root component, this is the entry point to the application
+ AlertComponent  - For showing alert messages, not using as of now for the application flow
+ HomeComponent - This is the home search page, where we can search user and repo details also we can do infinite scroll for loading more
+ LoginComponen - just a login page, no functonility added, any username or pass will accept.
+ UserComponent - specefic component for single user info.
+ RepoComponent - specefic component for single repo  info
+
+********************************************************************************************
+                                    AppModule  - Providers
+********************************************************************************************
+ AuthGuard - For Auth services in the application route
+ AlertService - For to show/hide alert messages, not using of now
+ AuthenticationService  - Application login service, just configured it will accept any user name and pass as of now
+ UserService  -  For user specefic service call
+ RepoService  -  For repo specefic service call
+ HTTP_INTERCEPTORS : JwtInterceptor - bypasss http call to set jwt token and header
+ HTTP_INTERCEPTORS : ErrorInterceptor  - - bypasss http call for error interceptor. we can configure 404 and other errors
+ HttpErrorHandler, MessageService - for application specefic error handling
+ */
+
+
+
 @NgModule({
     imports: [
         BrowserModule,

@@ -5,6 +5,12 @@ import { first } from 'rxjs/operators';
 import { User } from '../_models';
 import { UserService, RepoService } from '../_services';
 
+/*
+ ---------------   HomeComponent --------------
+ @description:
+ Home page search component
+ @invoke : /home
+*/
 @Component({
     templateUrl: 'home.component.html',
     styleUrls: ['home.scss']
@@ -24,14 +30,35 @@ export class HomeComponent implements OnInit {
     public repos = [];
     public totalRepoCount: number = 0;
 
+    /*
+    * @description: 
+    * UserService,RepoService,router initialization
+    * userService for user search,  repoService for repo searchs
+    */
     constructor(private userService: UserService, private repoService: RepoService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
+    /**
+     * A callback method that is invoked immediately after the component init
+     * 
+     * @description: 
+     * nil
+     * @param : none
+     * @returns:void
+    */
     ngOnInit() {
 
     }
 
+    /*
+    * searchReset
+    *
+    * @description: 
+    * reset search based on the radio button click
+    * @param:
+    * radio button clicked type
+    */
     searchReset(type){
         if(this.searchType !== type){
             let event = {
@@ -41,6 +68,15 @@ export class HomeComponent implements OnInit {
             this.onKeyDownEvt(event);
         }
     }
+
+   /*
+    * onScrollDown
+    *
+    * @description: 
+    * scroll handler for input data - for infinte data
+    * @param:
+    * scroll event
+    */
     onScrollDown(ev) {
         let pageSize = Number(AppConfig.DATAPERPAGE);
         if (this.users && this.users.length && this.users.length < this.totalCount) {
@@ -52,8 +88,16 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    onKeyDownEvt(event) {
 
+    /*
+    * onKeyDownEvt
+    *
+    * @description: 
+    * Enter key handler for input data
+    * @param:
+    * scroll event
+    */
+    onKeyDownEvt(event) {
         if (event.keyCode == 13) {
             let page = 1;
             this.repos = [];
@@ -77,7 +121,14 @@ export class HomeComponent implements OnInit {
         }
     }
 
-
+    /*
+    * fetchGitUsers
+    *
+    * @description: 
+    * for fetch user data based on the searh query 
+    * @param:
+    * page  - pagination number
+    */
     fetchGitUsers(page) {
         this.userService.getAllUsers(this.searchparam, page).subscribe((response) => {
             if (response && response.items) {
@@ -90,6 +141,14 @@ export class HomeComponent implements OnInit {
         });
     }
 
+    /*
+    * fechGitRepos
+    *
+    * @description: 
+    * for fetch repo data based on the searh query 
+    * @param:
+    * page  - pagination number
+    */
     fechGitRepos(page) {
         this.repoService.getAllRepos(this.searchparam, page).subscribe((response) => {
             if (response && response.items) {

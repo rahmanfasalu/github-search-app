@@ -8,7 +8,7 @@
   </div>
   <div class="header-right">
     <div class="header-search">
-      <input type="text" id="searchInput" [(ngModel)]="searchparam" name="searchparam" placeholder="Type a name then enter, eg: fasalu"
+      <input type="text" id="searchInput" [(ngModel)]="searchparam" name="searchparam" placeholder="Type a query then enter.."
         (keydown)="onKeyDownEvt($event)">
       <span class="user">user: {{currentUser}} | <a [routerLink]="['/login']">Logout</a></span>
 

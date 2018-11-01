@@ -6,6 +6,11 @@ import { LoginComponent } from './login';
 import { AuthGuard } from './_guards';
 import { UserComponent } from './user/user.component';
 
+/*
+ ---------------   Routing --------------
+ @description:
+ Application Main Routing file
+*/
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },

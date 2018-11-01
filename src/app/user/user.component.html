@@ -40,6 +40,7 @@
 
 
 <div class="user-aditional-info" *ngIf="reposInfo.length">
+   
     <div class="repos">
       <div class="repos-content">
         <div *ngFor="let repo of reposInfo" class="repo-tile" [routerLink]="['/repo',repo.id,repo.owner.login,repo.name]">
