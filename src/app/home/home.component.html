@@ -31,7 +31,7 @@
     user profile.. )</p>
   <p class="totalCount" *ngIf="repos.length <  totalRepoCount">( {{repos.length }} repo loaded, scroll down for more. )</p>
 
-  <div class="itemlist" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle"
+  <div *ngIf="totalCount > 0 || totalRepoCount > 0" class="itemlist" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle"
     (scrolled)="onScrollDown()">
 
     <div *ngIf="totalCount > 0" class="userList">

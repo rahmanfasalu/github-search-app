@@ -10,7 +10,7 @@ export class JwtInterceptor implements HttpInterceptor {
        
                 request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
                 request = request.clone({ headers: request.headers.set('Accept', 'application/vnd.github.mercy-preview+json') });
-                request = request.clone({ headers: request.headers.set('Authorization', 'token b58b54cb20cdede5e409008eba12cab272fab78e') });
+                request = request.clone({ headers: request.headers.set('Authorization', 'token af78fea730cd5451e85985bca359be748d6f85ba') });
         
         return next.handle(request);
     }

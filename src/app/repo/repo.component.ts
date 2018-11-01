@@ -10,12 +10,12 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class RepoComponent implements OnInit {
 
-  private repoName:any;
-  private repoOwner:any;
-  private repoInfo:any;
-  private viewMode:string;
-  private repo:string;
-  private owner:string;
+  public repoName:any;
+  public repoOwner:any;
+  public repoInfo:any;
+  public viewMode:string;
+  public repo:string;
+  public owner:string;
 
   readMeContent:any;
   contributors:any = [];
