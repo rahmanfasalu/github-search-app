@@ -30,6 +30,7 @@ $ ng build  // for production - minified build
 ### Todos
  - Write Tests
  - Two factor authentication using git.api
+ - Githup API have limited access for public search, so personal access token / autherization needed for seemless search
 
 License
 ----
